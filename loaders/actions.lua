@@ -1,4 +1,6 @@
-actions_loader = { }
+actions_loader = { 
+  preprocessors = {}
+}
 
 require("loaders.actions.mod")
 

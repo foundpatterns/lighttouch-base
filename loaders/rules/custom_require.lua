@@ -10,12 +10,16 @@ function rules_loader.custom_require(name)
         local header = rules_loader.extract_header(modulepath)
         local priority = header.priority or 1
 
-        rules_loader.write_priority(created_file, header, priority)
-        rules_loader.write_events_table(created_file, header)
-        rules_loader.write_input_parameter(created_file, header)
-        rules_loader.write_rule_function(created_file, header, modulename, priority, modulepath)
-        rules_loader.write_get_events_parameters(created_file, header)
-        rules_loader.write_return(created_file, header)
+        -- rules_loader.write_priority(created_file, header, modulename, priority, modulepath)
+        -- rules_loader.write_events_table(created_file, header, modulename, priority, modulepath)
+        -- rules_loader.write_input_parameter(created_file, header, modulename, priority, modulepath)
+        -- rules_loader.write_rule_function(created_file, header, modulename, priority, modulepath)
+        -- rules_loader.write_get_events_parameters(created_file, header, modulename, priority, modulepath)
+        -- rules_loader.write_return(created_file, header, modulename, priority, modulepath)
+
+        for _, fn in ipairs(rules_loader.preprocessors) do
+          fn(created_file, header, modulename, priority, modulepath)
+        end
 
         created_file:close()
         local to_compile = io.open("module.lua", "rb")

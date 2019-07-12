@@ -1,4 +1,5 @@
 require("loaders.rules.custom_require")
+require("loaders.rules.add_preprocessor")
 require("loaders.rules.extract_header")
 require("loaders.rules.write_events_table")
 require("loaders.rules.write_priority")

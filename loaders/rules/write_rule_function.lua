@@ -40,3 +40,5 @@ function rules_loader.write_rule_function (created_file, header, modulename, pri
     created_file:write("\n\tend")
   created_file:write("\nend\n") -- bottom rule function wrapper
 end
+
+rules_loader.add_preprocessor(rules_loader.write_rule_function)

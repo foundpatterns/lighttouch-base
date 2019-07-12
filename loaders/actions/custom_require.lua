@@ -8,12 +8,10 @@ function actions_loader.custom_require(name)
         local file = io.open(filename, "rb")
         if file then
           local header = actions_loader.extract_header(modulepath)
-  
-          actions_loader.write_events(created_file, header)
-          actions_loader.set_priority(created_file, header)
-          actions_loader.write_input_parameters(created_file, header)
-          actions_loader.write_function(created_file, header, modulepath)
-          actions_loader.write_return(created_file, header)
+
+          for _, fn in ipairs(actions_loader.preprocessors) do
+            fn(created_file, header, modulepath)
+          end
   
           created_file:close()
           -- Compile and return the module

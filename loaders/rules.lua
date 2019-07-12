@@ -1,4 +1,6 @@
-rules_loader = { }
+rules_loader = { 
+  preprocessors = {}
+}
 
 require("loaders.rules.mod")
 

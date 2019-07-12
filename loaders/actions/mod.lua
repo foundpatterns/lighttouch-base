@@ -1,4 +1,5 @@
 require("loaders.actions.custom_require")
+require("loaders.actions.add_preprocessor")
 require("loaders.actions.extract_header")
 require("loaders.actions.write_events")
 require("loaders.actions.set_priority")

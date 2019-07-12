@@ -1,4 +1,4 @@
-function rules_loader.write_get_events_parameters (created_file, header)
+function rules_loader.write_get_events_parameters (created_file, header, modulename, priority, modulepath)
   created_file:write("\nlocal function get_events_parameters(events_actions)")
     created_file:write("\n\tfor k, v in pairs(events_table) do")
       created_file:write("\n\t\tfor k1, v1 in pairs(events_actions[v]) do")
@@ -11,3 +11,5 @@ function rules_loader.write_get_events_parameters (created_file, header)
     created_file:write("\n\tend")
   created_file:write("\nend")
 end
+
+rules_loader.add_preprocessor(rules_loader.write_get_events_parameters)

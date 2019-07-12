@@ -1,4 +1,4 @@
-function actions_loader.write_input_parameters (created_file, header)
+function actions_loader.write_input_parameters (created_file, header, modulepath)
     if header.input_parameters[1] then
       created_file:write("local input_parameters = { " .. "\"" .. header.input_parameters[1] .. "\"")
       for k, v in pairs(header.input_parameters) do
@@ -10,3 +10,5 @@ function actions_loader.write_input_parameters (created_file, header)
       created_file:write("}\n")
     end
 end
+
+actions_loader.add_preprocessor(actions_loader.write_input_parameters)
